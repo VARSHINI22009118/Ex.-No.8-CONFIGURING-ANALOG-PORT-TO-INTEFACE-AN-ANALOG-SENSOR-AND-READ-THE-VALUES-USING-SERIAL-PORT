@@ -150,14 +150,62 @@ This module also includes a potentiometer that will fix the threshold value, & t
 
 
 ##  Program 
+DEVELOPED BY : M.PAVITHRA
+REG NO : 212222100032
 
+```
+#include "main.h"
+#include"stdio.h"
+uint32_t adcvalue;
+#if defined (_ICCARM) || defined (_ARMCC_VERSION)
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#elif defined(_GNUC_)
+   
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif  
 
- 
+while(1)
+{
+
+	HAL_ADC_Start(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1,100);
+			adcvalue = HAL_ADC_GetValue(&hadc1);
+			HAL_ADC_Stop(&hadc1);
+			HAL_Delay(500);
+			printf("ADC VALUE:%ld\n",adcvalue);
+
+}
+
+PUTCHAR_PROTOTYPE
+{
+
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+
+  return ch;
+}
+```
+## Output  :
+### Board Settings and its connections :
+![image](https://github.com/VARSHINI22009118/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/119401150/0b6b295d-1d13-4082-8860-e99cc5bf0b05)
+
+![image](https://github.com/VARSHINI22009118/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/119401150/03ef7d06-cf05-482f-aa14-57afc3b4bb4a)
+
+![image](https://github.com/VARSHINI22009118/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/119401150/bb41ce49-8eb5-45e8-876b-e3579cf355d9)
+
+### Normal ADC Value :
+
+![image](https://github.com/VARSHINI22009118/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/119401150/7e199a2f-02f8-4de0-bd61-7cc4f84dd406)
+
+### After Light Dipping of soil-moisture-sensor-device in water :
+
+![image](https://github.com/VARSHINI22009118/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/119401150/97bdf9dd-0a6f-44ec-8b95-35c99cf09846)
+
+![image](https://github.com/VARSHINI22009118/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/119401150/aeb58b53-16ce-4a6f-b4c0-5db64679956e)
+
 
 ## Result :
  
-## Output  :
-
+Hence,the configuring analog port to inteface an analog sensor and read the values using serial port runned successfully.
 
 
 
